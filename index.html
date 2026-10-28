@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Lorris Guillemot · Lolenco</title>
+<meta name="description" content="Lorris Guillemot, fondateur de Lolenco : socles NFC conçus et fabriqués en France.">
+<meta name="theme-color" content="#0e0e0f">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Manrope:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Mise en page : une colonne façon carte posée sur un socle, stries de couches d'impression 3D en fond */
+:root {
+  --bg: #0e0e0f;
+  --surface: #17171a;
+  --line: #2a2a2f;
+  --fg: #f2efe9;
+  --muted: #9a968f;
+  --accent: #d9c7a5;
+  --accent-ink: #141311;
+  --display: "Syne", "Helvetica Neue", Arial, sans-serif;
+  --body: "Manrope", "Segoe UI", Roboto, Arial, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; min-height: 100%; }
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--body);
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: max(28px, env(safe-area-inset-top, 0px)) max(28px, env(safe-area-inset-bottom, 0px));
+  display: flex;
+  justify-content: center;
+  /* stries très fines : les couches d'un socle imprimé */
+  background-image: repeating-linear-gradient(0deg, rgba(255,255,255,.018) 0 1px, transparent 1px 4px);
+}
+main { width: 100%; max-width: 420px; display: flex; flex-direction: column; gap: 28px; }
+
+.top { display: flex; justify-content: space-between; align-items: center; font-family: var(--mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.pulse { display: inline-flex; align-items: center; gap: 8px; }
+.pulse i { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 0 rgba(217,199,165,.6); animation: ping 2.4s infinite; }
+@keyframes ping { 0% { box-shadow: 0 0 0 0 rgba(217,199,165,.55); } 70%,100% { box-shadow: 0 0 0 9px rgba(217,199,165,0); } }
+
+.hero { display: flex; flex-direction: column; gap: 14px; padding-top: 12px; }
+.mark { font-family: var(--display); font-weight: 800; font-size: clamp(52px, 17vw, 76px); line-height: .9; letter-spacing: -.035em; margin: 0; }
+.mark span { color: var(--accent); }
+.who { display: flex; flex-direction: column; gap: 2px; }
+.who strong { font-family: var(--display); font-weight: 600; font-size: 21px; letter-spacing: -.01em; }
+.who em { font-style: normal; color: var(--muted); font-size: 15px; }
+.pitch { margin: 6px 0 0; color: var(--muted); font-size: 15px; max-width: 34ch; text-wrap: pretty; }
+.pitch b { color: var(--fg); font-weight: 600; }
+
+.actions { display: flex; flex-direction: column; gap: 12px; }
+.btn {
+  display: flex; align-items: center; gap: 14px;
+  width: 100%; padding: 17px 18px;
+  border-radius: 14px; border: 1px solid var(--line);
+  background: var(--surface); color: var(--fg);
+  font: 600 16px/1.2 var(--body); text-decoration: none; text-align: left;
+  cursor: pointer; transition: transform .15s ease, border-color .15s ease, background .15s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+.btn:hover { border-color: #3d3c42; }
+.btn:active { transform: scale(.985); }
+.btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.btn svg { width: 22px; height: 22px; flex: none; }
+.btn .txt { display: flex; flex-direction: column; gap: 3px; flex: 1; min-width: 0; }
+.btn small { font: 400 13px/1.3 var(--body); color: var(--muted); }
+.btn .arrow { width: 18px; height: 18px; opacity: .55; }
+.btn.primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+.btn.primary small { color: #4a4436; }
+.btn.primary .arrow { opacity: .8; }
+.row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.row .btn { justify-content: center; padding: 15px 12px; font-size: 15px; }
+
+.card { border: 1px solid var(--line); border-radius: 16px; background: var(--surface); overflow: hidden; }
+.card dl { margin: 0; display: grid; }
+.card .item { display: grid; grid-template-columns: 84px 1fr; gap: 12px; padding: 13px 16px; border-top: 1px solid var(--line); align-items: baseline; }
+.card .item:first-child { border-top: 0; }
+.card dt { font-family: var(--mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.card dd { margin: 0; min-width: 0; overflow-wrap: anywhere; font-size: 15px; }
+.card dd a { color: var(--fg); text-decoration: none; border-bottom: 1px solid var(--line); }
+.card dd a:hover { border-color: var(--accent); }
+
+.toast { position: fixed; left: 50%; bottom: max(24px, calc(env(safe-area-inset-bottom, 0px) + 16px)); transform: translate(-50%, 20px); opacity: 0; background: var(--fg); color: var(--bg); font-weight: 600; font-size: 14px; padding: 10px 16px; border-radius: 999px; transition: .25s ease; pointer-events: none; }
+.toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+footer { font-family: var(--mono); font-size: 11px; letter-spacing: .08em; color: var(--muted); display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; border-top: 1px solid var(--line); padding-top: 16px; }
+
+@media (prefers-reduced-motion: reduce) { .pulse i { animation: none; } .btn, .toast { transition: none; } }
+</style>
+</head>
+<body>
+<main>
+  <div class="top">
+    <span class="pulse"><i></i>Carte NFC</span>
+    <span>Clamart · FR</span>
+  </div>
+
+  <header class="hero">
+    <h1 class="mark">lolenco<span>.</span></h1>
+    <div class="who">
+      <strong>Lorris Guillemot</strong>
+      <em>Fondateur · fabrication</em>
+    </div>
+    <p class="pitch">Socles NFC pour les pros : <b>avis Google, Instagram ou sur mesure</b>. Conçus et imprimés en 3D en France.</p>
+  </header>
+
+  <nav class="actions" aria-label="Actions">
+    <a class="btn primary" id="btn-shop" href="https://eaieit-tu.myshopify.com" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16l-1.2 11.1a2 2 0 0 1-2 1.9H7.2a2 2 0 0 1-2-1.9L4 7Z"/><path d="M9 10V6a3 3 0 0 1 6 0v4"/></svg>
+      <span class="txt">Voir la boutique<small>Socles avis, Instagram et sur mesure</small></span>
+      <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
+    </a>
+
+    <button class="btn" id="btn-vcard" type="button">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="8" r="3.5"/><path d="M3.5 19.5c.8-3.2 3.4-5 6.5-5s5.7 1.8 6.5 5"/><path d="M19 8v6M16 11h6"/></svg>
+      <span class="txt">Enregistrer le contact<small>Ajoute ma fiche à ton téléphone</small></span>
+      <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v12M6 12l6 6 6-6"/></svg>
+    </button>
+
+    <div class="row">
+      <a class="btn" href="https://www.instagram.com/lolenco.studio/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none"/></svg>
+        Instagram
+      </a>
+      <a class="btn" href="mailto:lolenco@protonmail.com">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m4 7 8 6 8-6"/></svg>
+        E-mail
+      </a>
+    </div>
+  </nav>
+
+  <section class="card" aria-label="Coordonnées">
+    <dl>
+      <div class="item"><dt>Nom</dt><dd>Lorris Guillemot</dd></div>
+      <div class="item" id="row-tel" hidden><dt>Tél.</dt><dd><a id="tel-link" href="#"></a></dd></div>
+      <div class="item"><dt>E-mail</dt><dd><a href="mailto:lolenco@protonmail.com">lolenco@protonmail.com</a></dd></div>
+      <div class="item"><dt>Instagram</dt><dd><a href="https://www.instagram.com/lolenco.studio/" target="_blank" rel="noopener">@lolenco.studio</a></dd></div>
+      <div class="item"><dt>Atelier</dt><dd>63 rue des Closiaux<br>92140 Clamart</dd></div>
+    </dl>
+  </section>
+
+  <footer>
+    <span>Fabriqué en France</span>
+    <span>Imprimé en 3D · puce NFC</span>
+  </footer>
+</main>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+/* ===== À personnaliser ===== */
+const CONTACT = {
+  prenom: "Lorris",
+  nom: "Guillemot",
+  entreprise: "Lolenco",
+  fonction: "Fondateur",
+  telephone: "",            // ex. "+33 6 12 34 56 78" — laissé vide, la ligne reste masquée
+  email: "lolenco@protonmail.com",
+  site: "https://eaieit-tu.myshopify.com",
+  instagram: "https://www.instagram.com/lolenco.studio/",
+  rue: "63 rue des Closiaux",
+  ville: "Clamart",
+  cp: "92140",
+  pays: "France",
+  note: "Socles NFC pour professionnels, conçus et fabriqués en France."
+};
+/* =========================== */
+
+const esc = s => String(s).replace(/\\/g, "\\\\").replace(/\n/g, "\\n").replace(/([,;])/g, "\\$1");
+
+function buildVCard(c) {
+  const lines = [
+    "BEGIN:VCARD",
+    "VERSION:3.0",
+    `N:${esc(c.nom)};${esc(c.prenom)};;;`,
+    `FN:${esc(c.prenom + " " + c.nom)}`,
+    `ORG:${esc(c.entreprise)}`,
+    `TITLE:${esc(c.fonction)}`,
+    c.telephone ? `TEL;TYPE=CELL,VOICE:${c.telephone.replace(/\s/g, "")}` : null,
+    `EMAIL;TYPE=INTERNET,WORK:${c.email}`,
+    `URL:${c.site}`,
+    `X-SOCIALPROFILE;TYPE=instagram:${c.instagram}`,
+    `ADR;TYPE=WORK:;;${esc(c.rue)};${esc(c.ville)};;${esc(c.cp)};${esc(c.pays)}`,
+    `NOTE:${esc(c.note)}`,
+    "END:VCARD"
+  ].filter(Boolean);
+  return lines.join("\r\n");
+}
+
+function toast(msg) {
+  const t = document.getElementById("toast");
+  t.textContent = msg;
+  t.classList.add("show");
+  clearTimeout(toast._t);
+  toast._t = setTimeout(() => t.classList.remove("show"), 2600);
+}
+
+document.getElementById("btn-vcard").addEventListener("click", () => {
+  const vcf = buildVCard(CONTACT);
+  const fileName = "lorris-guillemot-lolenco.vcf";
+  const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+
+  if (isIOS) {
+    // Safari iOS ouvre directement l'écran « Nouveau contact »
+    window.location.href = "data:text/vcard;charset=utf-8," + encodeURIComponent(vcf);
+    return;
+  }
+  const blob = new Blob([vcf], { type: "text/vcard;charset=utf-8" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = fileName;
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 4000);
+  toast("Fiche téléchargée : ouvre-la pour l'ajouter");
+});
+
+if (CONTACT.telephone) {
+  const row = document.getElementById("row-tel");
+  const link = document.getElementById("tel-link");
+  link.textContent = CONTACT.telephone;
+  link.href = "tel:" + CONTACT.telephone.replace(/\s/g, "");
+  row.hidden = false;
+}
+</script>
+</body>
+</html>
