@@ -120,11 +120,11 @@ footer { font-family: var(--mono); font-size: 11px; letter-spacing: .08em; color
       <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
     </a>
 
-    <button class="btn" id="btn-vcard" type="button">
+    <a class="btn" id="btn-vcard" href="lorris-guillemot-lolenco.vcf">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="8" r="3.5"/><path d="M3.5 19.5c.8-3.2 3.4-5 6.5-5s5.7 1.8 6.5 5"/><path d="M19 8v6M16 11h6"/></svg>
       <span class="txt">Enregistrer le contact<small>Ajoute ma fiche à ton téléphone</small></span>
       <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v12M6 12l6 6 6-6"/></svg>
-    </button>
+    </a>
 
     <div class="row">
       <a class="btn" href="https://www.instagram.com/lolenco.studio/" target="_blank" rel="noopener">
@@ -203,28 +203,6 @@ function toast(msg) {
   clearTimeout(toast._t);
   toast._t = setTimeout(() => t.classList.remove("show"), 2600);
 }
-
-document.getElementById("btn-vcard").addEventListener("click", () => {
-  const vcf = buildVCard(CONTACT);
-  const fileName = "lorris-guillemot-lolenco.vcf";
-  const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
-
-  if (isIOS) {
-    // Safari iOS ouvre directement l'écran « Nouveau contact »
-    window.location.href = "data:text/vcard;charset=utf-8," + encodeURIComponent(vcf);
-    return;
-  }
-  const blob = new Blob([vcf], { type: "text/vcard;charset=utf-8" });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement("a");
-  a.href = url;
-  a.download = fileName;
-  document.body.appendChild(a);
-  a.click();
-  a.remove();
-  setTimeout(() => URL.revokeObjectURL(url), 4000);
-  toast("Fiche téléchargée : ouvre-la pour l'ajouter");
-});
 
 if (CONTACT.telephone) {
   const row = document.getElementById("row-tel");

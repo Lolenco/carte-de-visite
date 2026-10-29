@@ -1,0 +1,13 @@
+BEGIN:VCARD
+VERSION:3.0
+N:Guillemot;Lorris;;;
+FN:Lorris Guillemot
+ORG:Lolenco
+TITLE:Fondateur
+TEL;TYPE=CELL,VOICE:+33622412911
+EMAIL;TYPE=INTERNET,WORK:lolenco@protonmail.com
+URL:https://eaieit-tu.myshopify.com
+X-SOCIALPROFILE;TYPE=instagram:https://www.instagram.com/lolenco.studio/
+ADR;TYPE=WORK:;;63 rue des Closiaux;Clamart;;92140;France
+NOTE:Socles NFC pour professionnels\, conçus et fabriqués en France.
+END:VCARD
